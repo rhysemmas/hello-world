@@ -1,0 +1,20 @@
+pipeline:
+  build:
+    image: docker
+    commands:
+      - docker build --rm -t hello-world .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      branch: [master, development]
+      event: push
+  
+  test_image:
+    image: docker
+    commands:
+      - docker run --rm hello-world
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      branch: [master, development]
+      event: push
