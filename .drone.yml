@@ -12,7 +12,8 @@ pipeline:
   test_image:
     image: docker
     commands:
-      - docker run -p 4000:80 hello-world -d | docker ps -a | awk '{ print $1,$2 }' | grep hello-world | awk '{print $1 }'
+      - docker run -p 4000:80 hello-world -d
+      - docker ps -a | awk '{ print $1,$2 }' | grep hello-world | awk '{print $1 }'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     when:
