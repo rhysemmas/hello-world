@@ -9,13 +9,21 @@ pipeline:
       branch: [master, development]
       event: push
   
-  test_image:
+  create_image:
     image: docker
     commands:
       - docker run -d -p 4000:80 hello-world
-      - sh ./scripts/test.sh
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      branch: [master, development]
+      event: push
+
+  test_image:
+    image: python
+    commands:
+      - pip install ./scripts/test-requirements.txt
+      - python ./scripts/test.py
     when:
       branch: [master, development]
       event: push
