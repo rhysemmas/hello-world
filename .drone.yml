@@ -13,6 +13,16 @@ pipeline:
     image: docker
     commands:
       - docker run -d -p 4000:80 hello-world
+      - sh ./scripts/test.sh
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      branch: [master, development]
+      event: push
+
+  delete_image:
+    image: docker
+    commands:
       - docker ps -a | awk '{ print $1,$2 }' | grep hello-world | awk '{print $1 }' | xargs -I {} sh -c 'docker kill {}; docker rm {};'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
