@@ -22,7 +22,7 @@ pipeline:
   test_image:
     image: python
     commands:
-      - pip install ./scripts/test-requirements.txt
+      - pip install -r ./scripts/test-requirements.txt
       - python ./scripts/test.py
     when:
       branch: [master, development]
