@@ -9,7 +9,7 @@ pipeline:
       branch: [master, development]
       event: push
   
-  create_image:
+  create:
     image: docker
     commands:
       - docker run -d -p 4000:80 hello-world
@@ -19,7 +19,7 @@ pipeline:
       branch: [master, development]
       event: push
 
-  test_image:
+  test:
     image: python
     commands:
       - pip install -r ./scripts/test-requirements.txt
@@ -28,7 +28,7 @@ pipeline:
       branch: [master, development]
       event: push
 
-  delete_image:
+  delete:
     image: docker
     commands:
       - sh ./scripts/rm-d.sh
