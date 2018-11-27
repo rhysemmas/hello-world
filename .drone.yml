@@ -37,3 +37,15 @@ pipeline:
     when:
       branch: [master, development]
       event: push
+
+  push-to-registry:
+    image: docker/plugins
+    repo: rhysemmas/test-image
+    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
+    tags: latest
+    when:
+      branch: master
+      event: push
+
+#  deploy-to-kube:
+#    image: quay.io/ukhomeofficedigital/kd:v1.10.6
