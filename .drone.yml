@@ -9,7 +9,7 @@ pipeline:
       branch: [master, development]
       event: push
   
-  create:
+  create-container:
     image: docker
     commands:
       - docker run -d -p 4000:80 hello-world
@@ -19,7 +19,7 @@ pipeline:
       branch: [master, development]
       event: push
 
-  test:
+  test-container:
     image: python
     commands:
       - pip install -r ./scripts/test-requirements.txt
@@ -28,7 +28,7 @@ pipeline:
       branch: [master, development]
       event: push
 
-  delete:
+  delete-container:
     image: docker
     commands:
       - sh ./scripts/rm-d.sh
@@ -40,7 +40,7 @@ pipeline:
 
   push-to-registry:
     image: plugins/docker
-    repo: rhysemmas/test-image
+    repo: rhysemmas/hello-world
     secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
     tags: latest
     when:
