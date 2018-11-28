@@ -20,7 +20,7 @@ pipeline:
       event: push
 
   test-container:
-    image: python
+    image: python:2.7-slim
     commands:
       - pip install -r ./scripts/test-requirements.txt
       - python ./scripts/test.py
