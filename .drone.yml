@@ -49,3 +49,6 @@ pipeline:
 
 #  deploy-to-kube:
 #    image: quay.io/ukhomeofficedigital/kd:v1.10.6
+#    
+#    when:
+#      event: deployment
