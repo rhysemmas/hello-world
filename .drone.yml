@@ -53,6 +53,6 @@ pipeline:
     commands:
       - export KUBE_TOKEN=$$KUBE_TOKEN
       - export KUBE_SERVER=$$KUBE_SERVER
-      - kd -f service.yaml -f ingress.yaml -f deployment.yaml
+      - kd -f ./kube/service.yaml -f ./kube/ingress.yaml -f ./kube/deployment.yaml
     when:
       event: deployment
