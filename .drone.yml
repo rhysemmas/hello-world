@@ -50,6 +50,9 @@ pipeline:
   deploy-to-kube:
     image: quay.io/ukhomeofficedigital/kd:v1.10.6
     secrets: [ KUBE_SERVER, KUBE_TOKEN ]
+    environment:
+      - KUBE_NAMESPACE=default
+      - INSECURE_SKIP_TLS_VERIFY=true
     commands:
       - export KUBE_TOKEN=$$KUBE_TOKEN
       - export KUBE_SERVER=$$KUBE_SERVER
