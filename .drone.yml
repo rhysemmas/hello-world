@@ -49,7 +49,7 @@ pipeline:
 
   deploy-to-kube:
     image: quay.io/ukhomeofficedigital/kd:v1.10.6
-#    secrets: [ KUBE_SERVER, KUBE_TOKEN ]
+    secrets: [ KUBE_SERVER, KUBE_TOKEN ]
     commands:
       - export KUBE_TOKEN=$$KUBE_TOKEN
       - export KUBE_SERVER=$$KUBE_SERVER
