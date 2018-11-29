@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: hello-world-deployment
+    spec:
+      containers:
+        - name: hello-world
+          image: rhysemmas/hello-world:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

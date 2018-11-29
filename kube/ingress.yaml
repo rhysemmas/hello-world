@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-ingress
+spec:
+  rules:
+      - http:
+          paths:
+            - backend:
+                serviceName: hello-world
+                servicePort: 80
+              path: /
