@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: hello-world
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: hello-world-deployment
+        name: hello-world
     spec:
       containers:
         - name: hello-world
